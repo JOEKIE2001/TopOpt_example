@@ -7,7 +7,7 @@ from skimage import measure
 
 
 ### load structure data using np.loadtxt
-op_str = # complete the code here
+op_str = np.loadtxt("results/op_structure.txt") # complete the code here
 
 ### preprocessing the data
 
@@ -19,10 +19,10 @@ op_str[op_str[:,0]>th,0]=th
 op_str[op_str[:,-1]>th,-1]=th
 
 ## 2. write down the purpose of the following sippet in your report
-op_str_bound = np.where(op_str > th, th, 0)
-op_str_middle = np.tile(op_str[:,:,np.newaxis], (1,1,3))
-op_str_3D = np.concatenate((op_str_bound[:,:,np.newaxis],op_str_middle,op_str_bound[:,:,np.newaxis]),axis=2)
-
+#op_str_bound = np.where(op_str > th, th, 0)
+#op_str_middle = np.tile(op_str[:,:,np.newaxis], (1,1,3))
+#op_str_3D = np.concatenate((op_str_bound[:,:,np.newaxis],op_str_middle,op_str_bound[:,:,np.newaxis]),axis=2)
+op_str_3D = np.tile(op_str[:,:,np.newaxis], (1,1,3))
 ## 3. write down the purpose of the following sippet in your report
 verts, faces, normals, values = measure.marching_cubes(op_str_3D, th)
 
